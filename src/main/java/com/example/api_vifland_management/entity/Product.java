@@ -3,6 +3,7 @@ package com.example.api_vifland_management.entity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -87,15 +88,18 @@ public class Product {
     @Column(name = "district_id")
     private int districtId;
 
-    @Column(name = "ward_id")
-    private int wardId;
+    @ManyToOne
+    @JoinColumn(name = "ward_id",referencedColumnName = "id")
+    private Ward wardId;
 
     @Column(name = "soft_delete")
     private int softDelete;
 
+    @CreationTimestamp
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private Date createdAt;
 
+    @CreationTimestamp
     @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    private Date updatedAt;
 }

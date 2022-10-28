@@ -1,4 +1,7 @@
 package com.example.api_vifland_management.repository;
 
-public interface WardRepository {
+import com.example.api_vifland_management.entity.Ward;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface WardRepository extends JpaRepository<Ward,Integer> {
 }
