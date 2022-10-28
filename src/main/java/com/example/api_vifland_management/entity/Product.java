@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 @Entity
 @Getter
@@ -22,8 +21,9 @@ public class Product {
     @Column(name = "price_post")
     private double pricePost;
 
-    @Column(name = "cate_id")
-    private int cate_id;
+    @ManyToOne
+    @JoinColumn(name = "cate_id",referencedColumnName = "id")
+    private Category cateId;
 
     @Column
     private String title;
@@ -35,7 +35,7 @@ public class Product {
     private String slug;
 
     @Column
-    private int view;
+    private Integer view;
 
     @Column
     private String tags;
@@ -74,26 +74,28 @@ public class Product {
     private String email;
 
     @Column
-    private int status;
+    private Integer status;
 
     @Column
-    private int type;
+    private Integer type;
 
     @Column
-    private int orders;
+    private Integer orders;
 
-    @Column(name = "province_id")
-    private int provinceId;
+    @ManyToOne
+    @JoinColumn(name = "province_id",referencedColumnName = "id")
+    private Province provinceId;
 
-    @Column(name = "district_id")
-    private int districtId;
+    @ManyToOne
+    @JoinColumn(name = "district_id",referencedColumnName = "id")
+    private District districtId;
 
     @ManyToOne
     @JoinColumn(name = "ward_id",referencedColumnName = "id")
     private Ward wardId;
 
     @Column(name = "soft_delete")
-    private int softDelete;
+    private Integer softDelete;
 
     @CreationTimestamp
     @Column(name = "created_at")

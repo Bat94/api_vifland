@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Table(name = "ward")
@@ -23,17 +25,20 @@ public class Ward {
     @Column
     private String name;
 
-    @Column(name = "district_id")
-    private int districtId;
+    @ManyToOne
+    @JoinColumn(name = "district_id",referencedColumnName = "id")
+    private District districtId;
 
     @Column
     private String type;
 
+    @CreationTimestamp
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private Date createdAt;
 
+    @CreationTimestamp
     @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    private Date updatedAt;
 
     @JsonIgnore
     @OneToMany(mappedBy = "wardId", cascade = CascadeType.ALL)
