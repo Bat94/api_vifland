@@ -1,4 +1,7 @@
 package com.example.api_vifland_management.repository;
 
-public interface ProductRepository {
+import com.example.api_vifland_management.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product,Integer> {
 }
