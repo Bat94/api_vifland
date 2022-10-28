@@ -1,4 +1,7 @@
 package com.example.api_vifland_management.repository;
 
-public interface CategoryRepository {
+import com.example.api_vifland_management.entity.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category,Integer> {
 }
