@@ -45,4 +45,26 @@ public class ProductService implements IProductService {
         productRepository.save(product);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Product> deleteProduct(Integer id) {
+        Product product = productRepository.findOneById(id);
+        if(product == null){
+            return ResponseEntity.notFound().build();
+        }
+        productRepository.delete(product);
+        return new ResponseEntity<>(product,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Product> updateProduct(Integer id, ProductDto productDto) {
+        Optional<Category> category = categoryRepository.findById(productDto.getCateId());
+        if(category == null){
+            return ResponseEntity.notFound().build();
+        }
+        Product product = productRepository.findOneById(id);
+        product.setCateId(category.get());
+        productRepository.save(product);
+        return new ResponseEntity<>(product,HttpStatus.OK);
+    }
 }
