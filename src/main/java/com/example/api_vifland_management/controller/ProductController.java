@@ -18,4 +18,15 @@ public class ProductController {
     public ResponseEntity<Product> postProduct(@RequestBody ProductDto productDto){
         return iProductService.postProduct(productDto);
     }
+
+    @DeleteMapping("/delete-product/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable(value = "id")Integer id){
+        return iProductService.deleteProduct(id);
+    }
+
+    @PutMapping("/update-product/{id}")
+    public  ResponseEntity<Product> updateProduct(@PathVariable(value = "id")Integer id,
+                                                  @RequestBody ProductDto productDto){
+        return iProductService.updateProduct(id,productDto);
+    }
 }
