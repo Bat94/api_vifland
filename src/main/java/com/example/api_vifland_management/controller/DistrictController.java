@@ -19,6 +19,7 @@ public class DistrictController {
 
     @GetMapping("/get-district")
     public ResponseEntity<List<District>> listAllDitrict(){
+
         return iDistrictService.getAllDistrict();
     }
 }

@@ -5,5 +5,7 @@ import com.example.api_vifland_management.entity.Category;
 import org.springframework.http.ResponseEntity;
 
 public interface ICategoryService {
-    ResponseEntity<Category> postCate(CategoryDto categoryDto);
+    Category postCate(CategoryDto categoryDto);
+
+    Category postCateJDBC(CategoryDto categoryDto);
 }

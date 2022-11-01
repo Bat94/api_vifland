@@ -3,7 +3,6 @@ package com.example.api_vifland_management.service;
 import com.example.api_vifland_management.entity.District;
 import com.example.api_vifland_management.repository.DistrictRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,6 @@ public class DistrictService implements IDistrictService {
         if(districtList.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        return new ResponseEntity<>(districtList, HttpStatus.OK);
+        return (ResponseEntity<List<District>>) districtList;
     }
 }
